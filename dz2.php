@@ -22,7 +22,7 @@ arrayEcho($examp);
 echo arrayEcho($examp,8);
 
 //2
-echo '<br>'.$example.'2<br><br>';
+echo '<br><br>'.$example.'2<br><br>';
 
 function arifmetic ($val,$ar){
     switch ($ar) {
@@ -62,7 +62,7 @@ echo arifmetic($numders,'+').'<br>';
 echo arifmetic($numders,'-').'<br>';
 
 //3 не доконца!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-echo '<br>'.$example.'3<br><br>';
+echo '<br><br>'.$example.'3<br><br>';
 function easyCalc ($ar,$val1,$val2,$val3){
     switch ($ar) {
         case '+':
@@ -95,7 +95,7 @@ easyCalc('*',8,9,2.5);
 easyCalc('/',8,9,2.5);
 
 //4 ---------------------------------------------
-echo '<br>'.$example.'4<br><br>';
+echo '<br><br>'.$example.'4<br><br>';
 function tableArifmetic($valu1,$value2){
     if(is_int($valu1) && is_int($value2) ){
         echo '<table>';
@@ -115,7 +115,7 @@ function tableArifmetic($valu1,$value2){
 tableArifmetic(6,7);
 
 //5 ---------------------------------------------
-echo '<br>'.$example.'5<br><br>';
+echo '<br><br>'.$example.'5<br><br>';
 
 echo 'функция 1<br>';
 function revers($word){
@@ -140,3 +140,20 @@ function inspection($arg){
     }
 }
 inspection(revers('tetetet'));
+
+
+//6 ---------------------------------------------
+echo '<br><br>'.$example.'6<br><br>';
+echo date("d-m-Y H:i:s");
+// второе задание не понял ---------------------------------------------------------------------------------
+
+//7---------------------------------------------
+echo '<br><br>'.$example.'7<br><br>';
+
+$stroke='Карл у Клары украл Кораллы';
+$str = str_replace("К","",$stroke);
+echo $str.'<br>';
+
+$stroke2='Две бутылки лимонада';
+$str2 = str_replace("Две","Три",$stroke2);
+echo $str2.'<br>';
