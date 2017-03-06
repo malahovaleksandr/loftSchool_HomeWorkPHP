@@ -157,3 +157,51 @@ echo $str.'<br>';
 $stroke2='Две бутылки лимонада';
 $str2 = str_replace("Две","Три",$stroke2);
 echo $str2.'<br>';
+
+//8---------------------------------------------
+echo '<br><br>'.$example.'8<br><br>';
+//не сделано
+
+
+
+
+
+
+//9---------------------------------------------
+echo '<br><br>'.$example.'9<br><br>';
+$handle = fopen("file.txt", "w");
+
+$fileread ='file.txt';
+$text = "Hello, world. I`m will great php developer))";
+$test = fwrite($handle, $text);
+
+if ($test){
+    echo 'Данные в файл успешно занесены.';
+} else {
+    echo 'Ошибка при записи в файл.';
+}
+
+fclose($handle);
+echo '<br>';
+
+function readFiles ($name){
+    $handle = fopen($name, "r");
+    $homepage = fpassthru($handle);
+    fclose($handle);
+}
+
+readFiles($fileread);
+
+//10---------------------------------------------
+echo '<br><br>'.$example.'10<br><br>';
+$file2 = fopen("anothertest.txt", "w");
+
+$text2 = "Hello, again!";
+$test2 = fwrite($file2, $text2);
+
+if (!$test2){
+    echo 'Ошибка при записи в файл.';
+}
+$homepage = readfile("anothertest.txt");
+fclose($file2);
+

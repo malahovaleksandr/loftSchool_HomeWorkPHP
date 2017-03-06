@@ -1,7 +1,7 @@
 <?php
 //    1
 $name = 'Александр'; // равно разделяй пробелом иначе не читается
-$age=29;
+$age = 29;
 
 echo 'Меня зовут '.$name;
 echo 'Мне '.$age.' лет <br>';
@@ -12,14 +12,14 @@ echo '| <br>';
 echo '\ <br>';
 echo '/ <br>';
 echo "' <br>";
-$zadanie='Задание номер ';
+$zadanie = 'Задание номер ';
 //2
 echo $zadanie.'2 <br>';
 
-$allPic=80;
-$flom=23;
-$pancil=40;
-$paint=$allPic-$flom-$pancil;
+$allPic = 80;
+$flom = 23;
+$pancil = 40;
+$paint = $allPic-$flom-$pancil;
 echo 'Задачи 1.	Дана задача: На школьной выставке '.$allPic.' рисунков. '.$flom.' из них выполнены
  фломастерами, '.$pancil.' карандашами, а остальные — красками. Сколько рисунков, выполненные красками, на школьной выставке? <br>';
 echo 'Рисунков нарисованных красками сделано '.$paint.'<br>';
@@ -35,7 +35,7 @@ echo first.' - значение константа  <br>';
 define('first','23233');
 //4
 echo $zadanie.'4 <br>';
-$age=mt_rand(1,100);
+$age = mt_rand(1,100);
 if ( $age > 5 && $age < 65){
     echo 'Вам   еще работать   и   работать. число '.$age;
 } elseif ($age>65){
@@ -49,7 +49,7 @@ if ( $age > 5 && $age < 65){
 //5
 
 echo '<br>'.$zadanie.'5 <br>';
-$day=mt_rand(1,10);
+$day = mt_rand(1,10);
 
 
 // если $day будет 0 то твой покажет что это рабочий день, исправь это и напиши здесь почему так происходит
@@ -57,7 +57,7 @@ switch ($day) {
     case $day >= 1 && $day <= 5:
         echo "Это   рабочий   день";
         break;
-    case $day=6 && $day=7 :
+    case $day = 6 && $day = 7 :
         echo "Это   выходной   день";
         break;
     default:
@@ -97,11 +97,11 @@ foreach ($cars as $item => $value){
 //7
 echo '<br>'.$zadanie.'7 <br>';
  echo '<table>';
-for($i=1;$i<=10;$i++){
+for($i = 1;$i<= 10;$i++){
     echo '<tr>';
-    for($e=1;$e<=10;$e++) {
-        if($i%2==0){
-            if($e%2==0){
+    for($e = 1;$e<=10;$e++) {
+        if($i%2 == 0){
+            if($e%2 == 0){
                 echo '<td>['.$i.' * '.$e.']</td>';
             }else{
                 echo '<td>('.$i.' * '.$e.')</td>';
@@ -122,7 +122,7 @@ for($i=1;$i<=10;$i++){
 echo '</table>';
 
 echo '<br>'.$zadanie.'8 <br>';
-$str='word slove case watch';
+$str = 'word slove case watch';
 
 $pieces = explode(" ", $str);
 
@@ -133,6 +133,6 @@ while ($i <= count($pieces)) {
      $i++;
 }
 
-$newCars=implode("+", $pieces);
+$newCars = implode("+", $pieces);
 echo '<pre>';
 print_r($newCars);
