@@ -6,12 +6,13 @@ if(!$_SESSION['auth']=="autorization"){
     header('Location: http://loftshcooldz/dz3/dz3.php');
     exit;
 } else{
-    echo '<form action="cabinet.php" method="POST" >
+    echo '<form action="cabinet.php" method="POST" enctype="multipart/form-data" >
   <p>
     <b>зарегестрировались</b><br>
   </p>
-  <input type="text" name="login" placeholder="Логин" ><Br>
-  <input type="password" name="password" placeholder="Пароль"><Br>
+  <input type="text" name="name" placeholder="Имя" ><Br>
+  <input type="number" name="age" placeholder="возраст"><Br>
+  <input type="file" name="image" placeholder="картинка"><Br>
   <input type="submit" name="отправить">
  </form>';
 }
