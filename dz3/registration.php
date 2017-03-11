@@ -22,11 +22,8 @@ try {
     die();
 
 }
-//
+
 unset($_SESSION);
-//echo '<pre> очистка';
-//print_r($_SESSION);
-//echo '<br> конец чистка<br>';
 // кэшируем авроль
 $pre='loft_';
 $pass=md5($pre.$_POST['password']);
@@ -37,11 +34,10 @@ $count = $dbh->prepare("SELECT * FROM users WHERE login = :login");
 $count->bindParam(':login', $_POST['login']);
 $count->execute();
 $sameLogin = $count->fetchAll();
-//echo 'кол-во '.count($sameLogin).'<br>';
+
 
 if(!count($sameLogin)==0){
     $_SESSION['err']='такой логин уже есть';
-    //print_r($_SESSION);
     header("Location: ./dz3.php");
 //    exit();
 } else {
