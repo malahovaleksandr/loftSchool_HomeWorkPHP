@@ -23,34 +23,26 @@ try {
 
 }
 
-//unset($_SESSION);
-// кэшируем авроль
+unset($_SESSION);
 $pre='loft_';
 $pass=crypt($pre.$_POST['password']);
-$incomeLogin=trim(htmlspecialchars($_POST['login']));
-$authID=crypt($incomeLogin);
+// кэшируем авроль
 $dbh = new PDO($dsn, $user, $password,$opt);
 
-$count = $dbh->prepare("SELECT * FROM users WHERE login = :login");
+$count = $dbh->prepare("SELECT * FROM users WHERE login = :login and password= :pass");
 $count->bindParam(':login', $_POST['login']);
+$count->bindParam(':pass', $pass);
 $count->execute();
 $sameLogin = $count->fetchAll();
 
 
 if(!count($sameLogin)==0){
-    $_SESSION['err']='такой логин уже есть';
-    header("Location: ./dz3.php");
-//    exit();
-} else {
-    $dbh = new PDO($dsn, $user, $password,$opt);
-    $stmt = $dbh->prepare("INSERT INTO users (login, password, authID) VALUES (:login, :password, :authID)");
-    $stmt->bindParam(':login', $_POST['login']);
-    $stmt->bindParam(':password', $pass);
-    $stmt->bindParam(':authID', $authID);
-    $stmt->execute();
-
     $_SESSION['auth']="autorization";
     header("Location: ./cabinet.php");
+//    exit();
+} else {
+    $_SESSION['err']='ввели не правильно логин или пароль';
+    header("Location: ./dz3.php");
 //    exit();
 }
 
