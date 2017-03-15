@@ -112,3 +112,22 @@ if($rand%2==0){
 
 //3
 echo '<br>'.$example.'3<br><br>';
+
+$arrayCount=[];
+for($i=0;$i<50;++$i){
+    $arrayCount[]=mt_rand(1,100);
+}
+//записываем данные
+$jsf = fopen("random.cvs", "w");
+
+fputcsv($jsf, $arrayCount);
+//читаем данные из файла и суммируем
+$fileCvs = fopen("random.cvs", "r");
+
+$dataCvs=fgetcsv($fileCvs);
+
+$sum=0;
+for($i=0;$i<count($dataCvs);++$i){
+    $sum+=$dataCvs[$i];
+}
+echo '<br> сумма всех чисел из cvs файла '.$sum.'<br>';
