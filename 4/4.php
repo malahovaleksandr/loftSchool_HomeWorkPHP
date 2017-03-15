@@ -45,7 +45,7 @@ $fp = fopen("data.xml", "w");
 
 // записываем в файл текст
 fwrite($fp, $text);
-
+//              НЕ ЗАКОНЧИЛ ПЕРВЫЙ ПУНКТ------------------------------------------
 $file = file('data.xml');
 $i = 0;
 $cnt = count($file);
@@ -88,11 +88,11 @@ fwrite($jsf, $dec);
          if($i==2){
              $json[$i]='change';
          }
-         echo $json[$i].'<br>';
+
          $newArray[]=$json[$i];
      }
 
-     echo 'внесли изминения<br>';
+     echo 'внесли изменения<br>';
      //print_r($newArray);
 
      $dec=json_encode($newArray);
@@ -107,9 +107,9 @@ $rand=mt_rand(0,30);
 if($rand%2==0){
     changeJson("output.json");
 } else {
-    echo 'Ни чего не миняем';
+    echo 'Ни чего неменяем';
 }
-
+//---------------------------------------СРАВНИТЬ ДВА ФАЙЛА И НАЙТИ ИЗМЕНЕНИЯ
 //3
 echo '<br>'.$example.'3<br><br>';
 
@@ -124,10 +124,10 @@ fputcsv($jsf, $arrayCount);
 //читаем данные из файла и суммируем
 $fileCvs = fopen("random.cvs", "r");
 
-$dataCvs=fgetcsv($fileCvs);
+$dataCvs = fgetcsv($fileCvs);
 
 $sum=0;
-for($i=0;$i<count($dataCvs);++$i){
+for( $i = 0; $i < count($dataCvs); ++$i ){
     $sum+=$dataCvs[$i];
 }
 echo '<br> сумма всех чисел из cvs файла '.$sum.'<br>';
