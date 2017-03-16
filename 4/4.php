@@ -1,4 +1,5 @@
 <?php
+header('Content-type: text/html; charset=utf-8');
 $example='задание ';
 //1
 echo $example.'1<br><br>';
@@ -45,17 +46,35 @@ $fp = fopen("data.xml", "w");
 
 // записываем в файл текст
 fwrite($fp, $text);
+
+
+$xml = simplexml_load_file('data.xml');
+echo '<pre>';
+//print_r($xml);
+//print_r($xml['Type']);
+foreach ($xml as $info) {
+    if($info['Type']){
+        echo '<b>'.$info['PartNumber'].'</b><br>';
+        echo ' Имя '.$info->Name.'<br>  ';
+        echo ' улица '.$info->Street.'<br> ';
+        echo ' город '.$info->City.'<br> ';
+        echo ' штат '.$info->State.'<br> ';
+        echo ' индекс '.$info->Zip.'<br> ';
+        echo ' страна '.$info->Country.'<br> ';
+    }
+    if($info['PartNumber']){
+        echo '<b>'.$info['Type'].'</b><br>';
+        echo ' название продукта '.$info->ProductName.'<br>  ';
+        echo ' качество '.$info->Quantity.'<br> ';
+        echo ' цена '.$info->USPrice.'<br> ';
+        echo ' дата доставки  '.$info->Comment.'<br> ';
+    }
+
+}
+
 //              НЕ ЗАКОНЧИЛ ПЕРВЫЙ ПУНКТ------------------------------------------
 $file = file('data.xml');
 $i = 0;
-$cnt = count($file);
-while($i < $cnt) {
-    $file[$i]=str_replace('<', '&lt;', $file[$i]);
-    $file[$i]=str_replace('>', '&gt;', $file[$i]);
-    echo($file[$i]);
-    echo "<br>";
-    $i++;
-}
 
 
 //2
