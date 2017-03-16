@@ -30,7 +30,7 @@ $pass=crypt($pre.$_POST['password']);
 $dbh = new PDO($dsn, $user, $password,$opt);
 
 $count = $dbh->prepare("SELECT * FROM users WHERE login = :login and password= :pass");
-$count->bindParam(':login', $_POST['login']);
+$count->bindParam(':login', $_POST['login'],PDO::PARAM_STR);
 $count->bindParam(':pass', $pass);
 $count->execute();
 $sameLogin = $count->fetchAll();
@@ -38,6 +38,7 @@ $sameLogin = $count->fetchAll();
 
 if(!count($sameLogin)==0){
     $_SESSION['auth']="autorization";
+
     header("Location: ./cabinet.php");
 //    exit();
 } else {

@@ -63,7 +63,7 @@ foreach ($xml as $info) {
         echo ' страна '.$info->Country.'<br> ';
     }
     if($info['PartNumber']){
-        echo '<b>'.$info['Type'].'</b><br>';
+        echo '<b>'.$info['item'].'</b><br>';
         echo ' название продукта '.$info->ProductName.'<br>  ';
         echo ' качество '.$info->Quantity.'<br> ';
         echo ' цена '.$info->USPrice.'<br> ';
@@ -75,7 +75,6 @@ foreach ($xml as $info) {
 //              НЕ ЗАКОНЧИЛ ПЕРВЫЙ ПУНКТ------------------------------------------
 $file = file('data.xml');
 $i = 0;
-
 
 //2
 echo '<br>'.$example.'2<br><br>';
