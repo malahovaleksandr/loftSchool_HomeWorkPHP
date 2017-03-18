@@ -18,8 +18,8 @@ function formInput($err=''){
  <b>авторизация</b><br>
   </p>
  <p>'.$err.'</p>
-  <input type="text" name="login" placeholder="Логин" ><Br>
-  <input type="password" name="password" placeholder="Пароль"><Br>
+  <input type="text" name="login2" placeholder="Логин" ><Br>
+  <input type="password" name="password2" placeholder="Пароль"><Br>
   
   <input type="submit" name="отправить">
  ';

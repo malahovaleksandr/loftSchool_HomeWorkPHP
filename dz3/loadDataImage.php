@@ -1,39 +1,24 @@
 <?php
 session_start();
 
-$host='localhost';
-$db='loftPHP';
-$charset = 'utf8';
-$dsn = 'mysql:host='.$host.';dbname='.$db.';charset='.$charset;
-$user='root';
-$password='';
-$opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-// создаем подключение к БД
-$pdo = new PDO($dsn, $user, $password,$opt);
-
-try {
-    $pdo = null;
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-
-}
+include_once 'config.php';
 
 //------------------------------------load image-------------------------------------------------------
-if(empty($_FILES['input_add_photo'])){
-    exit('нет файла');
+if(empty($_FILES['image'])){
+    $_SESSION['notFile']='нет файла';
+    header("Location: ./cabinet.php");
+    exit();
 }
-$file=$_FILES['input_add_photo'];
+$file=$_FILES['image'];
+
 if(
     $file['type'] != 'image/gif' and
     $file['type'] != 'image/jpeg' and //проверяем какой формат загружаем
     $file['type'] != 'image/png'
 ){
-    exit('не тот формат');
+    $_SESSION['notFile']='не тот формат';
+    header("Location: ./cabinet.php");
+    exit();
 }
 
 
@@ -44,42 +29,46 @@ if($imageinfo['mime'] != 'image/gif' and //убеждаемся что тип ф
     $imageinfo['mime'] != 'image/jpeg' and
     $imageinfo['mime'] != 'image/png'
 ){
-    exit('не тот формат,не обманешь');
+    $_SESSION['notFile']='не тот формат,не обманешь';
+    header("Location: ./cabinet.php");
+    exit();
+
 
 }
 if($file['size'] == 0 or $file['size']> 1000000000){//проверяем размер загружаемого файла
-    exit('большой размер файла');
-
+    $_SESSION['notFile']='большой размер файла';
+    header("Location: ./cabinet.php");
+    exit();
 }
-$newDir='../image/loadPhoto';
+$newDir='/loadPhoto';
 if(!file_exists($newDir))//проверяем существует ли папка для сохранения файлов. file_exists это функция проверяет существует или нет
     mkdir($newDir,777);// если нет такой то создаем папку .в () первое значение где создаем, второе это права на папку
-print_r($_SERVER['DOCUMENT_ROOT']);
+//print_r($_SERVER['DOCUMENT_ROOT']);
 $type=strtolower(strrchr($file['name'], '.'));//strtolower переводит все буквы в маленькие(без заглавных) вдруг будет JPG
 // strrchr показывает текст который идет после символа указанного в () вторым значением ,у нас это точка '.'
 $filename = uniqid('image_');// генерируем уникальное имя для файла,в скобках префикс  нового имени
-$saveDir='/image/loadPhoto';//в какую папку сохранять
+$saveDir='/dz3/loadPhoto';//в какую папку сохранять
 $file_dist=$_SERVER['DOCUMENT_ROOT'].$saveDir.'/'.$filename.$type;//это прописываем адрес и имя нового файла кудп будем сохранять
 
-if(!move_uploaded_file($file['tmp_name'],$file_dist))//move_uploaded_file это функция перемещения загр файла, в скобках первое хначение это где временное хранение файла
-    // второе это куда его сохранить
-    exit('ошибка сохранения');
-// echo '<br>все хорошо';
+if(!move_uploaded_file($file['tmp_name'],$file_dist)) {//move_uploaded_file это функция перемещения загр файла, в скобках первое хначение это где временное хранение файла
+        $_SESSION['notFile']='не удалось сохранить файл';
+    header("Location: ./cabinet.php");
+    exit();
 //-----------------------------
+}
 
-
-
-$incomeLogin=trim(htmlspecialchars($_POST['name']));
+$incomeName=trim(htmlspecialchars($_POST['name']));
 $incomeAge=(int)trim(htmlspecialchars($_POST['age']));
 $incomeDesc=trim(htmlspecialchars($_POST['description']));
+$incomeSrc=$saveDir.'/'.$filename.$type;
 
 
     $dbh = new PDO($dsn, $user, $password,$opt);
     $stmt = $dbh->prepare("INSERT INTO dataUsers (age, nameUser, description,photo) VALUES (:age, :nameUser, :description, :photo)");
-    $stmt->bindParam(':age', $incomeLogin);
-    $stmt->bindParam(':nameUser', $incomeAge);
-    $stmt->bindParam(':description', $authID);
-    $stmt->bindParam(':photo', $incomeDesc);
+    $stmt->bindParam(':age', $incomeAge);
+    $stmt->bindParam(':nameUser', $incomeName);
+    $stmt->bindParam(':description', $incomeDesc);
+    $stmt->bindParam(':photo', $incomeSrc);
 
     $stmt->execute();
 
