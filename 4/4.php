@@ -103,7 +103,7 @@ fwrite($jsf, $dec);
      $newArray=[];
 
      for($i=0;$i < count($json);++$i){
-         if($i==2){
+         if($i == 2){
              $json[$i]='change';
          }
 
@@ -113,7 +113,7 @@ fwrite($jsf, $dec);
      echo 'внесли изменения<br>';
      //print_r($newArray);
 
-     $dec=json_encode($newArray);
+     $dec = json_encode($newArray);
 
      $jsf = fopen("output2.json", "w");
 
@@ -122,7 +122,7 @@ fwrite($jsf, $dec);
  }
 
 $rand=mt_rand(0,30);
-if($rand%2==0){
+if($rand%2 == 0){
     changeJson("output.json");
 } else {
     echo 'Ни чего неменяем';
@@ -144,8 +144,13 @@ $fileCvs = fopen("random.cvs", "r");
 
 $dataCvs = fgetcsv($fileCvs);
 
-$sum=0;
+$sum = 0;
 for( $i = 0; $i < count($dataCvs); ++$i ){
-    $sum+=$dataCvs[$i];
+    $sum+= $dataCvs[$i];
 }
 echo '<br> сумма всех чисел из cvs файла '.$sum.'<br>';
+
+//4
+echo '<br>'.$example.'4<br><br>';
+
+$curl='https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json';
