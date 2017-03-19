@@ -1,5 +1,8 @@
 <?php
-$example='задание ';
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+$example = '<b>задание </b>';
 //1
 echo $example.'1<br><br>';
 
@@ -25,25 +28,26 @@ echo arrayEcho($examp,8);
 echo '<br><br>'.$example.'2<br><br>';
 
 function arifmetic ($val,$ar){
+    $arif=0;
     switch ($ar) {
         case '+':
             foreach ($val as $value){
-                $arif+=$value;
+                $arif += $value;
             }
             break;
         case '-':
             foreach ($val as $value){
-                $arif-=$value;
+                $arif -= $value;
             }
             break;
         case '*':
-            $arif=1;
+            $arif = 1;
             foreach ($val as $value){
                 $arif=$value*$arif;
             }
             break;
         case '/':
-            $arif=1;
+            $arif = 1;
             foreach ($val as $value){
                 $arif=$value/$arif;
             }
@@ -55,7 +59,7 @@ function arifmetic ($val,$ar){
 
     return $arif;
 }
-$numders=[1,4,7,12,8];
+$numders = [1,4,7,12,8];
 echo arifmetic($numders,'/').'<br>';
 echo arifmetic($numders,'*').'<br>';
 echo arifmetic($numders,'+').'<br>';
@@ -66,19 +70,19 @@ echo '<br><br>'.$example.'3<br><br>';
 function easyCalc ($ar,$val1,$val2,$val3){
     switch ($ar) {
         case '+':
-            $arif2=$val1+$val2+$val3;
+            $arif2 = $val1+$val2+$val3;
             echo $val1.' + '.$val2.' + '.$val3.' = '.$arif2;
             break;
         case '-':
-            $arif2=$val1-$val2-$val3;
+            $arif2 = $val1-$val2-$val3;
             echo $val1.' - '.$val2.' - '.$val3.' = '.$arif2;
             break;
         case '*':
-            $arif2=$val1*$val2*$val3;
+            $arif2 = $val1*$val2*$val3;
             echo $val1.' * '.$val2.' * '.$val3.' = '.$arif2;
             break;
         case '/':
-            $arif2=$val1/$val2/$val3;
+            $arif2 = $val1/$val2/$val3;
             echo $val1.' / '.$val2.' / '.$val3.' = '.$arif2;
             break;
         default:
