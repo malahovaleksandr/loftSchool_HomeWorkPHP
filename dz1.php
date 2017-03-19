@@ -1,4 +1,7 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 //    1
 $name = 'Александр'; // равно разделяй пробелом иначе не читается
 $age = 29;
@@ -12,7 +15,7 @@ echo '| <br>';
 echo '\ <br>';
 echo '/ <br>';
 echo "' <br>";
-$zadanie = 'Задание номер ';
+$zadanie = '<br><b>Задание номер </b>';
 //2
 echo $zadanie.'2 <br>';
 
@@ -26,13 +29,13 @@ echo 'Рисунков нарисованных красками сделано 
 
 //3
 echo $zadanie.'3 <br>';
-define('first','number');
-if(defined( 'first')== true){
+define('first','23233');
+if(defined( 'first') == true){
     echo 'константа существует <br>';
 }
 echo first.' - значение константа  <br>';
 
-define('first','23233');
+//define('first','23233');
 //4
 echo $zadanie.'4 <br>';
 $age = mt_rand(1,100);
@@ -65,28 +68,28 @@ switch ($day) {
 }
 //6
 echo '<br>'.$zadanie.'6 <br>';
-$bmw =[
+$bmw = [
     'model' => 'X5',
     'speed' => '120',
     'doors' => '5',
     'year' => '2015'
 ];
-$toyota =[
+$toyota = [
     'model' => 'Camry',
     'speed' => '130',
     'doors' => '4',
     'year' => '2014'
 ];
-$opel =[
+$opel = [
     'model' => 'Astra',
     'speed' => '110',
     'doors' => '4',
     'year' => '2013'
 ];
 
-$cars['bmw']=$bmw;
-$cars['toyota']=$toyota;
-$cars['opel']=$opel;
+$cars['bmw'] = $bmw;
+$cars['toyota'] = $toyota;
+$cars['opel'] = $opel;
 echo '<br>';
 //print_r($cars);
 foreach ($cars as $item => $value){
@@ -97,9 +100,9 @@ foreach ($cars as $item => $value){
 //7
 echo '<br>'.$zadanie.'7 <br>';
  echo '<table>';
-for($i = 1;$i<= 10;$i++){
+for($i = 1;$i <= 10;$i++){
     echo '<tr>';
-    for($e = 1;$e<=10;$e++) {
+    for($e = 1;$e <= 10;$e++) {
         if($i%2 == 0){
             if($e%2 == 0){
                 echo '<td>['.$i.' * '.$e.']</td>';
@@ -108,7 +111,7 @@ for($i = 1;$i<= 10;$i++){
             }
 
         } else{
-            if($e%2==0){
+            if($e%2 == 0){
                 echo '<td>['.$i.' * '.$e.']</td>';
             }else{
                 echo '<td>'.$i.' * '.$e.'</td>';
@@ -128,7 +131,7 @@ $pieces = explode(" ", $str);
 
 // здесь у тебя ошибка типа NOTICE
 $i = 0;
-while ($i <= count($pieces)) {
+while ($i < count($pieces)) {
     echo $pieces[$i].'<br>';
      $i++;
 }
