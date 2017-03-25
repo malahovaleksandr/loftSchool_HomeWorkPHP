@@ -3,7 +3,7 @@ session_start();
 include_once 'config.php';
 
 if(!$_SESSION['auth']=="autorization"){
-    header('Location: http://lftest/dz3/dz3.php');
+    header('Location: http://lftest/dz3/index.php');
     exit;
 } else{
 
@@ -25,5 +25,6 @@ if(!$_SESSION['auth']=="autorization"){
         <br>";
         ++$r;
     }
+    echo "<br><a href='index.php'>на главную</a>";
 
 }

@@ -154,3 +154,15 @@ echo '<br> сумма всех чисел из cvs файла '.$sum.'<br>';
 echo '<br>'.$example.'4<br><br>';
 
 $curl='https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json';
+
+$ch = curl_init($curl);
+// Запускаем
+$answer = curl_exec($ch);
+
+ //Проверяем наличие ошибок
+if (!$answer) {
+    $info = curl_getinfo($ch);
+    echo 'Прошло ', $info['total_time'], ' секунд во время запроса к ', $info['url'], "\n";
+}
+echo '<pre>';
+echo $answer;

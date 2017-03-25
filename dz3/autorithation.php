@@ -6,12 +6,13 @@ include_once 'config.php';
 unset($_SESSION);
 $pre='loft_';
 $pass=sha1($pre.$_POST['password2']);
+$incameLog=addslashes (htmlspecialchars(trim($_POST['login2'])));//убираем пробелы по бокам, экранируем  html тэги и спец символы 
 
 // кэшируем авроль
 $dbh = new PDO($dsn, $user, $password,$opt);
 
 $count = $dbh->prepare("SELECT * FROM users WHERE login = :login and password= :pass");
-$count->bindParam(':login', $_POST['login2'],PDO::PARAM_STR);
+$count->bindParam(':login', $incameLog,PDO::PARAM_STR);
 $count->bindParam(':pass', $pass);
 $count->execute();
 $sameLogin = $count->fetchAll();
@@ -30,7 +31,7 @@ if(!count($sameLogin)==0){
 } else {
     $_SESSION['err']='ввели не правильно логин или пароль';
 
-    header("Location: ./dz3.php");
+    header("Location: ./index.php");
 //    exit();
 }
 

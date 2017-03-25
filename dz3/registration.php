@@ -4,10 +4,10 @@ include_once 'config.php';
 
 
 //unset($_SESSION);
-// кэшируем авроль
+// кэшируем пароль
 $pre='loft_';
 $pass=sha1($pre.$_POST['password']);
-$incomeLogin=trim(htmlspecialchars($_POST['login']));
+$incomeLogin=addslashes (trim(htmlspecialchars($_POST['login'])));
 $authID=sha1($incomeLogin);
 $dbh = new PDO($dsn, $user, $password,$opt);
 
@@ -19,7 +19,7 @@ $sameLogin = $count->fetchAll();
 
 if(!count($sameLogin)==0){
     $_SESSION['err']='такой логин уже есть';
-    header("Location: ./dz3.php");
+    header("Location: ./index.php");
 //    exit();
 } else {
     $dbh = new PDO($dsn, $user, $password,$opt);

@@ -3,7 +3,7 @@ session_start();
 
 
 if(!$_SESSION['auth']=="autorization"){
-    header("Location: ./dz3.php");
+    header("Location: ./index.php");
     exit;
 } else{
     echo '<form action="loadDataImage.php" method="POST" enctype="multipart/form-data" >
