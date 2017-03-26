@@ -8,11 +8,11 @@ trait property{
         $this->$direction=$direction;
         if($this->$direction=='forward')
         {
-            echo 'Автомобиль движется вперед -><br>';
+            echo 'Автомобиль движется вперед >>><br>';
         }
         elseif ($this->$direction=='back')
         {
-            echo 'Автомобиль движется назад <-<br>';
+            echo 'Автомобиль движется назад <<<<br>';
         }
     }
 
