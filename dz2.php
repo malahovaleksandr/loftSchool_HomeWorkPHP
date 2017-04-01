@@ -65,7 +65,7 @@ echo arifmetic($numders,'*').'<br>';
 echo arifmetic($numders,'+').'<br>';
 echo arifmetic($numders,'-').'<br>';
 
-//3 не доконца!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 echo '<br><br>'.$example.'3<br><br>';
 function easyCalc ($ar,$val1,$val2,$val3){
     switch ($ar) {
@@ -148,7 +148,9 @@ inspection(revers('tetetet'));
 
 //6 ---------------------------------------------
 echo '<br><br>'.$example.'6<br><br>';
-echo date("d-m-Y H:i:s");
+$time=date("H:i:s m-d-Y ");
+echo $time.'<br>';
+echo 'unixtime время '.strtotime($time);
 // второе задание не понял ---------------------------------------------------------------------------------
 
 //7---------------------------------------------
@@ -164,12 +166,9 @@ echo $str2.'<br>';
 
 //8---------------------------------------------
 echo '<br><br>'.$example.'8<br><br>';
-$str='RX packets:950381 errors:0 dropped:0 overruns:0 frame:0.  ';
+$str='RX packets:950381 errors:0 dropped:0 overruns:0 frame:0. :)  ';
 
-$str2 = stristr($str, 'packets');
-//echo $str2.'<br>';
 
-//echo preg_match('/\d{}/', $str2);
 
 //с регулярками пока тяжело найти значение, сделаю как могу пока
 

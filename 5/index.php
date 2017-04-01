@@ -14,4 +14,4 @@ $bmw->direction('forward');
 $bmw->move('160','30');
 $bmw->typeTransmission('automat');
 
-echo '<br><br><a href="/5-2/index.php">Пункт 5.2</a>';
+echo '<br><br><a href="5-2/index.php">Пункт 5.2</a>';
