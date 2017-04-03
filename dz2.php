@@ -7,7 +7,7 @@ $example = '<b>задание </b>';
 //1
 echo $example.'1<br><br>';
 
-function arrayEcho($arr,$true=0){
+function arrayEcho($arr,$true = 0){
 
     if ($true == 0) {
 
@@ -157,8 +157,7 @@ inspection(revers('tetetet'));
 echo '<br><br>'.$example.'6<br><br>';
 $time=date("H:i:s m-d-Y ");
 echo $time.'<br>';
-echo 'unixtime время '.strtotime($time);
-// второе задание не понял ---------------------------------------------------------------------------------
+echo 'unixtime время '.strtotime($time);// второе задание не понял ---------------------------------------------------------------------------------
 
 //7---------------------------------------------
 echo '<br><br>'.$example.'7<br><br>';
