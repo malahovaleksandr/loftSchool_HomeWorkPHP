@@ -1,4 +1,6 @@
 <?php
+ini_set("display_errors",1);
+error_reporting(E_ALL);
 
 //    1
 $name = 'Александр'; // равно разделяй пробелом иначе не читается
@@ -7,12 +9,8 @@ $age = 29;
 echo 'Меня зовут '.$name;
 echo 'Мне '.$age.' лет <br>';
 // здесь не правильно, это необходимо экранировать в одну строку
-echo '" <br>';
-echo '! <br>';
-echo '| <br>';
-echo '\ <br>';
-echo '/ <br>';
-echo "' <br>";
+echo '" ! | \ / \'';
+
 $zadanie = '<br><b>Задание номер </b>';
 //2
 echo $zadanie.'2 <br>';
@@ -50,20 +48,27 @@ if ( $age > 5 && $age < 65){
 //5
 
 echo '<br>'.$zadanie.'5 <br>';
-$day = mt_rand(1,10);
+$day = mt_rand(0,10);
+//$day=9;
+echo $day;
 
-
-// если $day будет 0 то твой покажет что это рабочий день, исправь это и напиши здесь почему так происходит
+// была не правильная конструкция case . надо как сейчас case ЗНАЧЕНИЕ , а у меня было case $day=>1 &&
 switch ($day) {
-    case $day >= 1 && $day <= 5:
-        echo "Это   рабочий   день";
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        echo "Это   рабочий   день!";
         break;
-    case $day = 6 && $day = 7 :
-        echo "Это   выходной   день";
+    case 6:
+    case 7:
+        echo "Это   выходной   день!";
         break;
     default:
         echo 'Неизвестный   день';
 }
+
 //6
 echo '<br>'.$zadanie.'6 <br>';
 $bmw = [
@@ -127,7 +132,7 @@ $str = 'word slove case watch';
 
 $pieces = explode(" ", $str);
 
-// здесь у тебя ошибка типа NOTICE
+// здесь у тебя ошибка типа NOTICE - ответ:уже нету
 $i = 0;
 while ($i < count($pieces)) {
     echo $pieces[$i].'<br>';
