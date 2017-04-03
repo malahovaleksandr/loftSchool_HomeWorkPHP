@@ -1,4 +1,5 @@
 <?php
+// код привести к стандарту psr -2
 header('Content-type: text/html; charset=utf-8');
 $example='задание ';
 //1
@@ -165,10 +166,10 @@ $jsf = fopen("random.cvs", "w");
 
 fputcsv($jsf, $arrayCount);
 //читаем данные из файла и суммируем
-$fileCvs = fopen("random.cvs", "r");
+$fileCvs = fopen("random.cvs", "r"); // двойные кавычки избыточны
 
 $dataCvs = fgetcsv($fileCvs);
-
+// необходимо посчитать сумму всех ЧЕТНЫХ чисел
 $sum = 0;
 for( $i = 0; $i < count($dataCvs); ++$i ){
     $sum+= $dataCvs[$i];
@@ -177,7 +178,7 @@ echo '<br> сумма всех чисел из cvs файла '.$sum.'<br>';
 
 //4
 echo '<br>'.$example.'4<br><br>';
-
+// в задании 4 небходимо вывести   title и page_id исправить
 $curl='https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json';
 
 $ch = curl_init($curl);
