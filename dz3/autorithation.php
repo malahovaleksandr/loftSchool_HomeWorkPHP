@@ -1,4 +1,5 @@
 <?php
+// весь код необходимо привести к стандарту psr -2
 session_start();
 include_once 'config.php';
 

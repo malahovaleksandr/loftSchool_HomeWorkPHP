@@ -48,6 +48,7 @@ $type=strtolower(strrchr($file['name'], '.'));//strtolower переводит в
 // strrchr показывает текст который идет после символа указанного в () вторым значением ,у нас это точка '.'
 $filename = uniqid('image_');// генерируем уникальное имя для файла,в скобках префикс  нового имени
 $saveDir='/dz3/loadPhoto';//в какую папку сохранять
+// // из за того что здесь жестко прописана ссылка , хотя корнем проекта является  dz3 не загружаются фото
 $file_dist=$_SERVER['DOCUMENT_ROOT'].$saveDir.'/'.$filename.$type;//это прописываем адрес и имя нового файла кудп будем сохранять
 
 if(!move_uploaded_file($file['tmp_name'],$file_dist)) {//move_uploaded_file это функция перемещения загр файла, в скобках первое хначение это где временное хранение файла
@@ -62,7 +63,7 @@ $incomeAge=(int)trim(htmlspecialchars($_POST['age']));
 $incomeDesc=trim(htmlspecialchars($_POST['description']));
 $incomeSrc=$saveDir.'/'.$filename.$type;
 
-
+    // вынести инициализацию бд и создать обьект  PDO только один раз
     $dbh = new PDO($dsn, $user, $password,$opt);
     $stmt = $dbh->prepare("INSERT INTO dataUsers (age, nameUser, description,photo) VALUES (:age, :nameUser, :description, :photo)");
     $stmt->bindParam(':age', $incomeAge);

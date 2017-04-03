@@ -2,6 +2,7 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+// исправь все ошибки которые не соответствуют стандарту psr-2
 $example = '<b>задание </b>';
 //1
 echo $example.'1<br><br>';
@@ -26,7 +27,7 @@ echo arrayEcho($examp,8);
 
 //2
 echo '<br><br>'.$example.'2<br><br>';
-
+// наверное arithmetic? называй все правильно)
 function arifmetic ($val,$ar){
     $arif=0;
     switch ($ar) {
@@ -60,6 +61,7 @@ function arifmetic ($val,$ar){
     return $arif;
 }
 $numders = [1,4,7,12,8];
+// если вместо массива будет другой тип сообщение о неккоректном вводе отсутствует
 echo arifmetic($numders,'/').'<br>';
 echo arifmetic($numders,'*').'<br>';
 echo arifmetic($numders,'+').'<br>';
@@ -145,6 +147,11 @@ function inspection($arg){
 }
 inspection(revers('tetetet'));
 
+// полиндромом должны являтся следующие фразы
+//А щётка как тёща
+//Городок Бишкек шибко дорог
+//Лёша на горе рога нашёл
+// у тебя ничего не работает
 
 //6 ---------------------------------------------
 echo '<br><br>'.$example.'6<br><br>';
@@ -167,7 +174,6 @@ echo $str2.'<br>';
 //8---------------------------------------------
 echo '<br><br>'.$example.'8<br><br>';
 $str='RX packets:950381 errors:0 dropped:0 overruns:0 frame:0. :)  ';
-
 
 
 //с регулярками пока тяжело найти значение, сделаю как могу пока
